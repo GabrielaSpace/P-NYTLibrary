@@ -21,6 +21,7 @@ article{
     box-shadow: #F5EBE0 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, #F5EBE0 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, #F5EBE0 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, #F5EBE0 30px -30px;
 
 }
+
 h1{
     color: #b97c72;
 }
@@ -39,4 +40,11 @@ h3{
 }
 h5{
     color: rgba(66, 65, 65, 0.932);
-}  
+} 
+
+a{
+    background-color: #DBA39A;
+    color: #FCF8F3;
+    padding: 3px;
+    text-decoration: none;
+}
