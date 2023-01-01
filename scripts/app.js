@@ -56,6 +56,11 @@ async function listName() {
         listNameUpdate.setAttribute('class','list_name');
         containerU.appendChild(listNameUpdate);
         listNameUpdate.textContent= `Update frequency: ${object.updated}`;
+
+        let butSeeMore= document.createElement('a');
+        butSeeMore.setAttribute('href','#');
+        containerU.appendChild(butSeeMore);
+        butSeeMore.textContent='See more...';
     }
 
     console.log(listFullName,updateFrequency,listOldestBookListed,listLastBookIncorporated);
