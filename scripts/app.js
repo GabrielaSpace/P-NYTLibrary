@@ -15,10 +15,11 @@ Frecuencia de actualización
 Link para poder cargar la lista*/
 
 //Dashboard Info
-let bMain= document.createElement('main');
-document.body.appendChild(bMain);
-let bSection = document.createElement('section');
-bMain.appendChild(bSection);
+let bMain =document.createElement('main');
+let bfooter=document.querySelector('footer');
+document.body.insertBefore(bMain,bfooter);
+let containerPpal=document.createElement('section');
+bMain.appendChild(containerPpal);
 
 
 async function listName() {
@@ -27,17 +28,37 @@ async function listName() {
     const listNames = database.results;
     const listBooks =database.results;
 
-
     for (let i=0; i<listNames.length;i++){
         listFullName.push(listNames[i].list_name); 
         listOldestBookListed.push(listNames[i].oldest_published_date); 
         listLastBookIncorporated.push(listNames[i].newest_published_date); 
-        updateFrequency.push(listNames[i].updated); 
+        updateFrequency.push(listNames[i].updated);
         containers (listNames[i]);
     }
- 
+
+    function containers(object){
+        let containerU = document.createElement('article');
+        containerU.setAttribute('class','containerUList');
+        containerPpal.appendChild(containerU);
+        let listNameTitle = document.createElement('h3');
+        listNameTitle.setAttribute('class','list_name');
+        containerU.appendChild(listNameTitle);
+        listNameTitle.textContent=object.list_name;
+        let listNameOldestBook= document.createElement('h5');
+        listNameOldestBook.setAttribute('class','list_name');
+        containerU.appendChild(listNameOldestBook);
+        listNameOldestBook.textContent=`Oldest published: ${object.oldest_published_date}`;
+        let listNameNewestBook= document.createElement('h5');
+        listNameNewestBook.setAttribute('class','list_name');
+        containerU.appendChild(listNameNewestBook);
+        listNameNewestBook.textContent=`Latest published: ${object.newest_published_date}`;
+        let listNameUpdate= document.createElement('h5');
+        listNameUpdate.setAttribute('class','list_name');
+        containerU.appendChild(listNameUpdate);
+        listNameUpdate.textContent= `Update frequency: ${object.updated}`;
+    }
+
     console.log(listFullName,updateFrequency,listOldestBookListed,listLastBookIncorporated);
-    
 }
 listName()
 
