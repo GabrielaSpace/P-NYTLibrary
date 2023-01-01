@@ -55,7 +55,7 @@ async function listName() {
         let listNameUpdate= document.createElement('h5');
         listNameUpdate.setAttribute('class','list_name');
         containerU.appendChild(listNameUpdate);
-        listNameUpdate.textContent= `Update frequency: ${object.updated}`;
+        listNameUpdate.textContent= `Update frequency: ${object.updated.toLowerCase()}`;
 
         let butSeeMore= document.createElement('a');
         butSeeMore.setAttribute('href','#');
