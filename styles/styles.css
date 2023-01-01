@@ -45,6 +45,9 @@ h5{
 a{
     background-color: #DBA39A;
     color: #FCF8F3;
+    font-weight: bold;
     padding: 3px;
     text-decoration: none;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
 }
