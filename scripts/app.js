@@ -2,7 +2,7 @@ const listFullName=[];
 const listOldestBookListed =[];
 const listLastBookIncorporated =[];
 const updateFrequency=[];
-const listBestSeller=[]
+const listBestSeller=[];
 
 /* fase 1
 
@@ -26,7 +26,7 @@ async function listName() {
     const result =await fetch (`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`);
     const database = await result.json();
     const listNames = database.results;
-    const listBooks =database.results;
+    const listBooks =database.results.lists ;
 
     for (let i=0; i<listNames.length;i++){
         listFullName.push(listNames[i].list_name); 
@@ -40,7 +40,7 @@ async function listName() {
         let containerU = document.createElement('article');
         containerU.setAttribute('class','containerUList');
         containerPpal.appendChild(containerU);
-        let listNameTitle = document.createElement('h3');
+        let listNameTitle = document.createElement('h3'); 
         listNameTitle.setAttribute('class','list_name');
         containerU.appendChild(listNameTitle);
         listNameTitle.textContent=object.list_name;
@@ -63,7 +63,7 @@ async function listName() {
         butSeeMore.textContent='See more...';
     }
 
-    console.log(listFullName,updateFrequency,listOldestBookListed,listLastBookIncorporated);
+    console.log('b');
 }
 listName()
 
