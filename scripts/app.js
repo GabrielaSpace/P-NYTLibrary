@@ -1,3 +1,12 @@
+window.addEventListener('load',()=>{
+    const containerLoader =document.querySelector('#loadercontainer');
+    containerLoader.style.opacity=0;
+    containerLoader.style.visibility = 'hidden'
+}
+
+)
+
+
 const listFullName=[];
 const listOldestBookListed =[];
 const listLastBookIncorporated =[];
@@ -67,6 +76,8 @@ async function listName() {
 }
 listName()
 
+
+
 /* fase 1. parte 2
 Los libros deben estar organizados según el orden de la lista oficial
 Incluir
@@ -79,8 +90,6 @@ Link para poder comprar el libro en amazon (debe abrirse en otra pestaña)
 /* 
 async function listBooks(params) {
     const result = await fetch ()
-
-    
 }
 
  */
