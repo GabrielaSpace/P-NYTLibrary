@@ -2,10 +2,7 @@ window.addEventListener('load',()=>{
     const containerLoader =document.querySelector('#loadercontainer');
     containerLoader.style.opacity=0;
     containerLoader.style.visibility = 'hidden'
-}
-
-)
-
+}) 
 
 const listFullName=[];
 const listOldestBookListed =[];
