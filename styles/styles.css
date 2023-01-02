@@ -1,8 +1,3 @@
-*,*:before,*:after{
-    outline: 0;
-    box-sizing: border-box;
-}
-
 #loadercontainer{
     background-color: #F5EBE0;
     position: fixed;
@@ -25,17 +20,16 @@
     color: #b97c72;
     font-size: 13px;
     position: relative;
-    animation-delay: -0.15s;
+    animation-delay: -0.12s;
 } 
-#loader:before,#loader:after{
+#loader:before, #loader:after{
     content: '';
     position: absolute;
     top: 0;
-
-}
+} 
 #loader:before{
     left: -55px;
-    animation-delay: -0.3s;
+    animation-delay: -0.24s;
 }
 #loader:after{
     right: 55px;
@@ -54,6 +48,8 @@
 
 body{
     background-color: #F5EBE0;
+    padding: 0;
+    margin: 0;
 }
 header{
     padding: 0%;
