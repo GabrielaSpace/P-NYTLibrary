@@ -6,8 +6,6 @@ let bookTitleRank=[];
 let links=[];
 
 
-
-
 /* async function fullOverview() {
     const result =await fetch (`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`);
     const database = await result.json();
