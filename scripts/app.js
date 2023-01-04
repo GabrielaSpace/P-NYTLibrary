@@ -50,15 +50,15 @@ async function listName() {
         listNameTitle.setAttribute('class','list_name');
         containerU.appendChild(listNameTitle);
         listNameTitle.textContent=object.list_name;
-        let listNameOldestBook= document.createElement('h5');
+        let listNameOldestBook= document.createElement('p');
         listNameOldestBook.setAttribute('class','list_name');
         containerU.appendChild(listNameOldestBook);
         listNameOldestBook.textContent=`Oldest published: ${object.oldest_published_date}`;
-        let listNameNewestBook= document.createElement('h5');
+        let listNameNewestBook= document.createElement('p');
         listNameNewestBook.setAttribute('class','list_name');
         containerU.appendChild(listNameNewestBook);
         listNameNewestBook.textContent=`Latest published: ${object.newest_published_date}`;
-        let listNameUpdate= document.createElement('h5');
+        let listNameUpdate= document.createElement('p');
         listNameUpdate.setAttribute('class','list_name');
         containerU.appendChild(listNameUpdate);
         listNameUpdate.textContent= `Update frequency: ${object.updated.toLowerCase()}`;
