@@ -50,21 +50,21 @@ async function listName() {
         listNameTitle.setAttribute('class','list_name');
         containerU.appendChild(listNameTitle);
         listNameTitle.textContent=object.list_name;
-        let listNameOldestBook= document.createElement('h5');
+        let listNameOldestBook= document.createElement('p');
         listNameOldestBook.setAttribute('class','list_name');
         containerU.appendChild(listNameOldestBook);
         listNameOldestBook.textContent=`Oldest published: ${object.oldest_published_date}`;
-        let listNameNewestBook= document.createElement('h5');
+        let listNameNewestBook= document.createElement('p');
         listNameNewestBook.setAttribute('class','list_name');
         containerU.appendChild(listNameNewestBook);
         listNameNewestBook.textContent=`Latest published: ${object.newest_published_date}`;
-        let listNameUpdate= document.createElement('h5');
+        let listNameUpdate= document.createElement('p');
         listNameUpdate.setAttribute('class','list_name');
         containerU.appendChild(listNameUpdate);
         listNameUpdate.textContent= `Update frequency: ${object.updated.toLowerCase()}`;
 
-        let butSeeMore= document.createElement('a');
-        butSeeMore.setAttribute('href','#');
+        let butSeeMore= document.createElement('button');
+        butSeeMore.setAttribute('type','submit');
         containerU.appendChild(butSeeMore);
         butSeeMore.textContent='See more...';
     }
@@ -85,40 +85,3 @@ Titulo y la posición que ocupa en la lista ( #1 titulo.... #2 titulo....)
 Link para poder comprar el libro en amazon (debe abrirse en otra pestaña)
  */
 /* 
-async function listBooks(params) {
-    const result = await fetch ()
-}
-
- */
-
-/* async function fullOverview() {
-    const result =await fetch (`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`);
-    const database = await result.json();
-    const fullOverviewList = database.results.lists;
-
-    for (let i=0; i<fullOverviewList.length;i++){
-        listFullName.push(fullOverviewList[i].list_name); 
-        /* listOldestBookListed.push(fullOverviewList[i].list_name); 
-        listLastBookIncorporated.push(fullOverviewList[i].list_name);  
-        updateFrequency.push(fullOverviewList[i].updated); 
-
-    }
-    console.log(listFullName,updateFrequency);
-    
-}
-fullOverview() */
-
-
-
-/* //BestSellers
-async function BestSellers() {
-    const result =await fetch (`https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`);
-    const database = await result.json();
-    const bestSellersList = database.results;
-
-    for (let i=0; i<bestSellersList.length;i++){
-        listBestSeller.push(bestSellersList[i].title); 
-    }
-    console.log(listBestSeller);
-}
-BestSellers() */

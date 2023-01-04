@@ -87,11 +87,11 @@ h2{
 h3{
     color: #DBA39A ;   
 }
-h5{
+p{
     color: rgba(66, 65, 65, 0.932);
 } 
 
-a{
+button{
     background-color: #DBA39A;
     color: #FCF8F3;
     font-weight: bold;
