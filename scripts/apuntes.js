@@ -1,14 +1,9 @@
-let list_name=[];
-let listBooks=[];
-let bookImage=[];
-let bookDescription=[];
-let bookTitleRank=[];
-let links=[];
 
 
 
 
-/* async function fullOverview() {
+
+async function fullOverview() {
     const result =await fetch (`https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`);
     const database = await result.json();
     const fullOverviewList = database.results.lists;
@@ -20,7 +15,7 @@ let links=[];
 
     console.log(list_name,bookTitleRank);
 }
-fullOverview()  */
+fullOverview()  
 
 
 

@@ -1,12 +1,3 @@
-/* fase 1
-
-Incluir una animación mientras esperamos la carga del contenido.
-Al cargar la web deben de aparecer todas las listas con los siguientes datos:
-Nombre completo de la lista
-Fecha del libro más antiguo en la lista
-Fecha del último libro incorporado
-Frecuencia de actualización
-Link para poder cargar la lista*/
 
 //Dashboard Info
 
@@ -21,12 +12,17 @@ const listOldestBookListed =[];
 const listLastBookIncorporated =[];
 const updateFrequency=[];
 const listBestSeller=[];
+let completeList=[];
 
 let bMain =document.createElement('main');
 let bfooter=document.querySelector('footer');
 document.body.insertBefore(bMain,bfooter);
 let containerPpal=document.createElement('section');
+containerPpal.setAttribute('id','dashboard');
 bMain.appendChild(containerPpal);
+let containerBooks=document.createElement('section');
+containerBooks.setAttribute('id','booksSection');
+bMain.appendChild(containerBooks);
 
 
 async function listName() {
@@ -39,6 +35,7 @@ async function listName() {
         listOldestBookListed.push(listNames[i].oldest_published_date); 
         listLastBookIncorporated.push(listNames[i].newest_published_date); 
         updateFrequency.push(listNames[i].updated);
+        completeList.push(listNames[i]);
         containers (listNames[i]);
     }
 
@@ -65,10 +62,56 @@ async function listName() {
 
         let butSeeMore= document.createElement('button');
         butSeeMore.setAttribute('type','submit');
+        butSeeMore.setAttribute('value',`${object.list_name_encoded}`);
+        butSeeMore.setAttribute('onclick','#')
         containerU.appendChild(butSeeMore);
         butSeeMore.textContent='See more...';
     }
 
-    console.log('b');
+    console.log(completeList);
 }
 listName()
+
+function buttonSeeMore(){
+    for(let i=0; i>)
+}
+
+// let list_name=[];
+let bookImage=[];
+let bookDescription=[];
+let bookTitle=[];
+let bookRank=[];
+let listWeeks=[];
+let links=[];
+async function booksLists(list){
+    let resp = await fetch (`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`)
+    let database = await resp.json();
+    let booksList=database.results.books;
+
+    for(let i=0; i<booksList.length;i++){
+        bookImage.push(booksList[i].book_image);
+        bookDescription.push(booksList[i].description);
+        bookTitle.push(booksList[i].title);
+        bookRank.push(booksList[i].rank);
+        listWeeks.push(booksList[i].weeks_on_list);
+        links.push(booksList[i].amazon_product_url);
+        bookContainer(booksList[i]);
+    }
+
+    
+function bookContainer(){
+    let comeBack=document.createElement('button');
+    comeBack.setAttribute('value','Come back');
+    comeBack.setAttribute('onclick','#')
+
+    let containerB= document.createElement('article');
+    containerB.setAttribute('class','bookC');
+    containerB.innerHTML=`<img src=${bookImage} alt=${bookTitle}>
+    <h3>N°${bookRank}${bookTitle}</h3>
+    <p>Weeks on list: ${listWeeks}</p>
+    <p>${description}</p>
+    <a href=${links} target='_blank'>Buy on amazon</a>` 
+}
+
+}booksLists() 
+
