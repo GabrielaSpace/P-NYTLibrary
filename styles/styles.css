@@ -62,7 +62,7 @@ section{
     align-items: center;
     justify-content: center;
 }
-article{
+.theList{
     background-color: #FCF8F3;
     width: 320px;
     padding: 10px;
@@ -101,3 +101,25 @@ button{
     box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
     cursor: pointer;
 }
+
+.cover{
+    background-color: #FCF8F3;
+    width: 320px;
+    padding: 10px;
+    margin: 20px;
+}
+img{
+    width: 260px;
+    height: 330px;
+    border-radius: 10px;
+    margin: 30px;
+}
+
+a{
+    background-color: #DBA39A;
+    text-decoration: none;
+    color: #FCF8F3;
+    font-weight: bolder;
+    padding: 5px;
+    border-radius: 5px;
+} 
