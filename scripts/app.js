@@ -26,13 +26,13 @@ async function listName() {
                         document.querySelector(`#${object.list_name_encoded}`).addEventListener('click',()=> booksLists(list_name_encoded)
                         )}
 }listName() 
+/* 
+let goBack=document.createElement('button');
+containerBooks.appendChild(goBack);
+goBack.textContent='Go back';
+go.onclick= listName();
 
-/* let comeBack=document.createElement('button');
-containerBooks.appendChild(comeBack);
-comeBack.textContent='Come back';
-comeBack.onclick= listName();
-
-function comeBackB(){
+function goBackB(){
     document.querySelector('#dashboard').style.display ='block';
     document.querySelector('#booksSection').style.display='none';
 
