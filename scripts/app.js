@@ -26,6 +26,7 @@ async function listName() {
                         document.querySelector(`#${object.list_name_encoded}`).addEventListener('click',()=> booksLists(list_name_encoded)
                         )}
 }listName() 
+
 /* 
 let goBack=document.createElement('button');
 containerBooks.appendChild(goBack);
@@ -37,9 +38,13 @@ function goBackB(){
     document.querySelector('#booksSection').style.display='none';
 
 }  */
- 
-async function booksLists(){
-    let resp = await fetch (`https://api.nytimes.com/svc/books/v3/lists/current/childrens-middle-grade-hardcover.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`)
+document.addEventListener('click',(e)=>
+console.log('click en',e.target)
+)
+
+
+async function booksLists(codeList){
+    let resp = await fetch (`https://api.nytimes.com/svc/books/v3/lists/current/${codeList}.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`)
     let database = await resp.json();
     let booksList=database.results.books;
 
@@ -48,7 +53,6 @@ async function booksLists(){
     }
 
 function bookContainer(object){
-    console.log('prueba')
     let containerB= document.createElement('article');
     containerB.setAttribute('class','cover');
     containerBooks.appendChild(containerB);
