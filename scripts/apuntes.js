@@ -1,6 +1,20 @@
+document.addEventListener('click',(e)=>{
+    console.log('click en',e.target);
+     if(e.target.matches(`#${object.list_name_encoded}`)){
+    
+    } }) 
 
+/* 
+let goBack=document.createElement('button');
+containerBooks.appendChild(goBack);
+goBack.textContent='Go back';
+go.onclick= listName();
 
+function goBackB(){
+    document.querySelector('#dashboard').style.display ='block';
+    document.querySelector('#booksSection').style.display='none';
 
+}  */
 
 
 async function fullOverview() {
