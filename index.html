@@ -20,7 +20,35 @@
     <header>
       <h1>New York Times</h1>
       <h2>Best Bellers</h2>
+      <section id="auth">
+        <form id="signUpForm">
+            <div>
+              <label for="userSignUp" class="signUpUserName">User name:</label>
+              <input type="text" id="userSignUp" placeholder="user" required autocomplete/>
+            </div>
+            <div>
+              <label for="emailSignUp" class="signUpEmail">Email:</label>
+              <input id="emailSignUp" placeholder="Write your email" required />
+            </div>
+            <div>
+              <label for="passwordSignUp">Password:</label>
+              <input id="passwordSignUp" placeholder="Should be at least 6 characters" required />
+            </div>
     
+            <div>
+              <label for="pictureSignUp">Picture: </label>
+              <input
+                type="file"
+                id="pictureSignUp"
+                accept="image/*"
+                name="signup-picture"
+              />
+            </div>
+    
+            <button type="submit" class="signUpBut">Register</button>
+          </form> 
+         
+      </section>
       <section id="dashboard"></section>
       <section id="booksSection"></section>
     </main>
