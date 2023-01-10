@@ -1,5 +1,5 @@
 //Phase1
-window.addEventListener('load',()=>{
+ window.addEventListener('load',()=>{
     const containerLoader =document.querySelector('#loadercontainer');
     containerLoader.style.opacity=0;
     containerLoader.style.visibility = 'hidden'}) 
@@ -21,16 +21,23 @@ async function listName() {
                             <p>Latest published: ${object.newest_published_date}</p>
                             <p>Update frequency: ${object.updated.toLowerCase()}</p>
                             <button type='button' id='${object.list_name_encoded}'>See more...</button>`
-        document.querySelector(`#${object.list_name_encoded}`).addEventListener('click',()=>{booksLists(object.list_name_encoded,object.list_name)
-        containerPpal.style.display= 'none'})}}listName() 
+        document.querySelector(`#${object.list_name_encoded}`).addEventListener('click',()=>{booksLists(object.list_name_encoded,object.list_name);
+        containerPpal.style.display= 'none';
+        containerBooks.style.display='flex';
+    })}}listName() 
 
 async function booksLists(codeList,name){
     let resp = await fetch (`https://api.nytimes.com/svc/books/v3/lists/current/${codeList}.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`)
     let database = await resp.json();
     let booksList=database.results.books;
-    containerBooks.innerHTML=`<div><h1>${name} Books:<h1></br></br></br>
-    <button type='click'>Go back</button></div>`
-    
+    containerBooks.innerHTML=`<div id='goBackTitle'><h1>List: ${name}<h1></br></br></br>
+    <button id='goBack' type='button'>Go back</button></div>`
+    document.querySelector('#goBack').addEventListener('click',
+    ()=>{containerBooks.style.display='none';
+        containerPpal.style.display='flex';
+        listName();
+    })
+
     for(let i=0; i<booksList.length;i++){bookContainer(booksList[i])}
     function bookContainer(object){
         let containerB= document.createElement('article');
@@ -41,6 +48,4 @@ async function booksLists(codeList,name){
                             <p>Weeks on list: ${object.weeks_on_list}</p>
                             <p>${object.description}</p>
                             <a href=${object.amazon_product_url} target='_blank'>Buy on amazon</a>`}
-}booksLists() 
-//Phase 2
-
+}booksLists()  
