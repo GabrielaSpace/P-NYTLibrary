@@ -45,15 +45,3 @@ async function BestSellers() {
     console.log(listBestSeller);
 }
 BestSellers() */
-
-
- /*  if (error.code === "auth/email-already-in-use") {
-      alert("Email already in use");
-    } else if (error.code === "auth/invalid-email") {
-      alert("Invalid email");
-    }
-    if (error.code === "auth/weak-password") {
-      alert("Weak password, the password should be at least 6 characters");
-    } else if (error.code) {
-      alert("Something went wrong");
-    } */
