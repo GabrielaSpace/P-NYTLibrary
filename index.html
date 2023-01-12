@@ -20,7 +20,31 @@
     <header>
       <h1>New York Times</h1>
       <h2>Best Bellers</h2>
-    
+      <nav>
+        <ul>
+          <li class="logOut"><a>Log In</a></li>
+          <li class="logOut"><a>Sign Up</a></li>
+          <li class="logIn"><a>Log Out</a></li>
+        </ul>
+      </nav>
+      <section id="auth">
+        <form id="signUpForm">
+            <div>
+              <p>Already have an account? Then please sign in.</p>
+            </div>
+            <div>
+              <label for="userSignUp" class="signUpUserName">User name:</label>
+              <input type="text" id="userSignUp" placeholder="user" required />
+            </div>
+            <div>
+              <label for="emailSignUp" class="signUpEmail">Email:</label>
+              <input id="emailSignUp" placeholder="Write your email" required />
+            </div>
+            <div>
+              <label for="passwordSignUp">Password:</label>
+              <input id="passwordSignUp" placeholder="Should be at least 6 characters" required />
+            </div>
+
       <section id="dashboard"></section>
       <section id="booksSection"></section>
     </main>
