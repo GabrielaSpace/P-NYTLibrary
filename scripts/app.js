@@ -68,8 +68,7 @@ signUpForm.addEventListener("submit", async (e) => {
         alert("Something went wrong");
         break;
     }
-  
-  }
+  } signUpForm.reset()
 });
 
 
@@ -103,7 +102,7 @@ LogInForm.addEventListener('submit', async (e)=>{
               alert("Something went wrong login");
               break;
     }}
-
+    LogInForm.reset()
 });
 
 
