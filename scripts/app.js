@@ -17,7 +17,7 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.15.0/fi
 import { signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
 //Cloud Firestone
-import {getFirestore, getDocs, collection} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"
+import {getFirestore, getDocs, collection, addDoc} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -30,9 +30,103 @@ const firebaseConfig = {
   measurementId: "G-NVB71RFMP2",
 };
 
+//Phase 2
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+
+const signUpForm = document.querySelector("#signUpForm");
+
+signUpForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const signUpUserName = document.querySelector("#userSignUp").value;
+  const signUpEmail = document.querySelector("#emailSignUp").value;
+  const signUpPassword = document.querySelector("#passwordSignUp").value;
+  console.log(signUpEmail, signUpPassword, signUpUserName);
+  try {
+    const userCredentials = await createUserWithEmailAndPassword(
+      auth,
+      signUpEmail,
+      signUpPassword
+    );
+    console.log(userCredentials);
+    showMessage('Successful registration')
+    showMessage(`Session started: Welcome ${signUpUserName}`)
+  } catch (error) {
+    console.log(error.message);
+    console.log(error.code);
+
+    switch (error.code) {
+      case "auth/email-already-in-use":
+        showMessage("Email already in use",error);
+        break;
+      case "auth/auth/invalid-email":
+        showMessage("Invalid email",error);
+        break;
+      case "auth/weak-password":
+        showMessage("Weak password, the password should be at least 6 characters",error);
+        break;
+      default:
+        showMessage("Something went wrong",error);
+        break;}}signUpForm.reset()});
+//log In form
+const   LogInForm = document.querySelector("#LogInForm");
+LogInForm.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const email = document.querySelector("#emailLogin").value;
+    const password = document.querySelector("#passwordLogin").value;
+    
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log(userCredential)
+        showMessage(`Welcome back ${email}`)
+    }
+    catch(error){
+        console.log(error.message);
+        console.log(error.code);
+
+        switch (error.code) {
+            case "auth/wrong-password":
+              showMessage("Wrong password",error);
+              break;
+            case "auth/user-not-found":
+              showMessage("User not found",error);
+              break;
+            default:
+              showMessage("Something went wrong login",error);
+              break;}}LogInForm.reset()
+});
+
+//Log Out
+const logOut = document.querySelector('#logOutBut')
+logOut.addEventListener('click', async()=>{
+    await signOut(auth)
+    showMessage('You have successfully logged out')
+    console.log('No user in the system')
+})
+
+
+//Authentication is displayed based on the current state of the user
+const loginCheck = user =>{
+    if (user) {
+        signUpForm.style.display='none'
+        LogInForm.style.display='none'
+        logOut.style.display='block'
+    } else {
+      signUpForm.style.display='block'
+      LogInForm.style.display='block'
+      logOut.style.display='none'
+      
+    }
+}
+
+
 //Phase1
 let containerPpal=document.querySelector('#dashboard');
 let containerBooks=document.querySelector('#booksSection');
+let containerFav=document.querySelector('#favorites')
 async function listName() {
   const result =await fetch (`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`);
   const database = await result.json();
@@ -51,145 +145,74 @@ async function listName() {
       document.querySelector(`#${object.list_name_encoded}`).addEventListener('click',()=>{booksLists(object.list_name_encoded,object.list_name);
       containerPpal.style.display= 'none';
       containerBooks.style.display='flex';
+      containerFav.style.display='none';
+
   })}}listName() 
 
 async function booksLists(codeList,name){
   let resp = await fetch (`https://api.nytimes.com/svc/books/v3/lists/current/${codeList}.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`)
   let database = await resp.json();
   let booksList=database.results.books;
-  containerBooks.innerHTML=`<div id='goBackTitle'><h1>List: ${name}<h1></br></br></br>
+  containerBooks.innerHTML=`<div id='goBackTitle'><h1>List name: ${name}<h1>
   <button id='goBack' type='button'>Go back</button></div>`
-  document.querySelector('#goBack').addEventListener('click',
+  const goBackBut=  document.querySelector('#goBack')
+  goBackBut.addEventListener('click',
   ()=>{containerBooks.style.display='none';
       containerPpal.style.display='flex';
+      goBackBut.style.display='none';
       listName();
   })
 
   for(let i=0; i<booksList.length;i++){bookContainer(booksList[i])}
   function bookContainer(object){
-      let containerB= document.createElement('article');
-      containerB.setAttribute('class','cover');
-      containerBooks.appendChild(containerB);
-      containerB.innerHTML=`<img src=${object.book_image} alt=${object.title}>
+    let containerB= document.createElement('article');
+    containerB.setAttribute('class','cover');
+    containerBooks.appendChild(containerB);
+    containerB.innerHTML=`<img src=${object.book_image} alt=${object.title}>
                           <h3>N°${object.rank}. ${object.title}</h3>
                           <p>Weeks on list: ${object.weeks_on_list}</p>
                           <p>${object.description}</p>
-                          <div class='amazonFav'><a href=${object.amazon_product_url} target='_blank'>Buy on Amazon</a>
-                          <a>+ Add to favorites</a></div>`}
-}booksLists()
+                          <a href=${object.amazon_product_url} target='_blank'>Buy on Amazon</a>
+                          <button type='button' id='${object.title}' name='${name}' class='favBut'>+ Add to favorites</button>`
+                        }}booksLists()
+//Sección favoritos
+const favoritesList =document.querySelector('.favoriteList')
+const favBut = document.querySelector('.loginBut')
+// favBut.onClick=saveF()
+//Guardar favoritos
 
 
-//Phase 2
-// Initialize Firebase
- const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-// Initialize Cloud Firestore and get a reference to the service
-export const db = getFirestore(app);
+/* function saveF(){
+  db.collection('users').add({
+    nombre: document.querySelector('.emailLogin').value
+  })
+  .then((docRef)=>{
+    alert('nombre incluido con ID: ',docRef.id)
+  })
+  .catch((error)=>{console.log('Error adding document',error)})
+}  */
 
-const signUpForm = document.querySelector("#signUpForm");
-
-signUpForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const signUpUserName = document.querySelector("#userSignUp").value;
-  const signUpEmail = document.querySelector("#emailSignUp").value;
-  const signUpPassword = document.querySelector("#passwordSignUp").value;
-  console.log(signUpEmail, signUpPassword, signUpUserName);
-  try {
-    const userCredentials = await createUserWithEmailAndPassword(
-      auth,
-      signUpEmail,
-      signUpPassword
-    );
-    console.log(userCredentials);
-  } catch (error) {
-    console.log(error.message);
-    console.log(error.code);
-
-    switch (error.code) {
-      case "auth/email-already-in-use":
-        alert("Email already in use");
-        break;
-      case "auth/auth/invalid-email":
-        alert("Invalid email");
-        break;
-      case "auth/weak-password":
-        alert("Weak password, the password should be at least 6 characters");
-        break;
-      default:
-        alert("Something went wrong");
-        break;}}
-});
-
-//log In form
-
-const   LogInForm = document.querySelector("#LogInForm");
-LogInForm.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    const email = document.querySelector("#emailLogin").value;
-    const password = document.querySelector("#passwordLogin").value;
-    
-
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        console.log(userCredential)
-
-    }
-    catch(error){
-        console.log(error.message);
-        console.log(error.code);
-
-        switch (error.code) {
-            case "auth/wrong-password":
-              alert("Wrong password");
-              break;
-            case "auth/user-not-found":
-              alert("User not found");
-              break;
-            default:
-              alert("Something went wrong login");
-              break;}}
-});
-
-//To know if an user is Log or not
-const loggedOutLinks=document.querySelectorAll('.logOut');
-const loggedInLinks=document.querySelectorAll('.logIn');
-
-
-const loginCheck = user =>{
-    if (user) {
-        loggedOutLinks.forEach(li=>li.style.display='none')
-        loggedInLinks.forEach(li=>li.style.display='block')
-    } else {
-        loggedInLinks.forEach(li=>li.style.display='none')
-        loggedOutLinks.forEach(li=>li.style.display='block')
-    }
-}
-
-
-
-//Log In 
+//Log In -Si el usuario esta autenticado puede obtener sus favoritos
 onAuthStateChanged(auth,async(user)=>{
-    if (user) {
-      const querySnapshot= await getDocs(collection(db, 'favorites'))
-      setupFavorites(querySnapshot.docs);
-    } else {
-        setupFavorites([]);
-      
-    }
-    loginCheck(user)
+  if (user) {
+    const querySnapshot= await getDocs(collection(db, 'favorites'))
+    setupFavorites(querySnapshot.docs);
+  } else {
+      setupFavorites([]);
+    
+  }
+  loginCheck(user)
 })
 
-
-const favoritesList =document.querySelector('.favoriteList')
-
+// Pinta los favoritos en el DOM
 const setupFavorites =(data)=>{
     if(data.length){
         let html =''
         data.forEach(fav=>{
           const favorite=fav.data()
           const li=`<li>
-          <h3>${favorite.title}</h3>
-          <p>${favorite.content}</p>
+          <h3>${favorite.list}</h3>
+          <p>${favorite.title}</p>
           </li>`
           html +=li
         })
@@ -199,9 +222,35 @@ const setupFavorites =(data)=>{
     }
 }
 
-//Log Out
-const logOut = document.querySelector('#logOutBut')
-logOut.addEventListener('click', async()=>{
-    await signOut(auth)
-    
-})
+//user alerts styles
+function showMessage(message, type = "success") {
+  Toastify({
+    text: message,
+    duration: 4000,
+    destination: "https://github.com/apvarun/toastify-js",
+    newWindow: true,
+    close: true,
+    gravity: "top", 
+    position: "center", 
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: type === "success" ? "green" : "red",
+    },
+  }).showToast();
+}
+
+//Views
+let home= document.querySelector('#homeView');
+let favorite= document.querySelector('#favoriteView');
+favorite.addEventListener('click', (e)=>{
+  containerPpal.style.display='none'
+  containerBooks.style.display='none'
+  containerFav.style.display='flex'
+}
+)
+home.addEventListener('click', (e)=>{
+  containerPpal.style.display='flex'
+  containerBooks.style.display='none'
+  containerFav.style.display='none'
+}
+)

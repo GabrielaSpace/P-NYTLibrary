@@ -76,12 +76,12 @@ h1{
 }
 h2{
     background-color: black;
-    width: 450px;
+    width: 370px;
     text-align: right;
     font-size: 60px;
     font-family: 'Passion One', cursive;
     color:#FEFCF3 ;
-    padding: 0px 5px;
+    padding: 0px 10px;
     
 }
 h3{
@@ -91,16 +91,6 @@ p{
     color: rgba(66, 65, 65, 0.932);
 } 
 
-button{
-    background-color: #DBA39A;
-    color: #FCF8F3;
-    font-weight: bold;
-    padding: 3px;
-    text-decoration: none;
-    font-size: 14px;
-    box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 3px;
-    cursor: pointer;
-}
 
 .cover{
     background-color: #FCF8F3;
@@ -115,13 +105,55 @@ img{
     margin: 30px;
 }
 
-a{
+a,button{
+    cursor: pointer;
     background-color: #DBA39A;
     text-decoration: none;
     color: #FCF8F3;
     font-weight: bolder;
-    padding: 5px;
+    padding: 7px;
     border-radius: 5px;
+    border: #b97c72 1px solid;
+    margin: 3px;
  
 } 
 
+#goBackTitle{
+    display: block;
+    padding: 10px;
+    max-width: 320px;
+  }
+
+  #signUpForm, #LogInForm{
+    background-color: #dba39a2b;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  input{
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    padding: 8px 15px;
+    border-bottom: 1px solid rgb(250, 230, 230);
+    width: 85%;
+    font-size: 12px;
+    border-radius: 3px;
+    margin: 1px;
+  }
+
+.formMessage{
+    color: #b97c72;
+    font-size: smaller;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+
+  ul>li{
+    display: inline-flex;
+    
+    list-style: none;
+  }
