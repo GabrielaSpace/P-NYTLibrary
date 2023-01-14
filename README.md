@@ -11,5 +11,4 @@
 - Responsive design, mobile first, HTML5 semantics
 
 On the Dashboard will find the list of best-selling books by theme "Data provided by The New York Times", by pressing the read more button you will be able to see the books on the selected list and it includes the following information:
-
-
+ge" src="https://user-images.githubusercontent.com/118684159/212479231-45707138-e7bd-43ef-8e82-4578509642d2.png">
