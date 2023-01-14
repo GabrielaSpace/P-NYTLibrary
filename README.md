@@ -17,7 +17,7 @@ Mobile view
 
 ![lists](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/lists.png)
 
--By pressing the read button you will be able to see the books from the selected list and it includes the following book information:
+-By pressing the 'See More' button you will be able to see the books from the selected list and it includes the following book information:
 
 ![bookDetails](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/bookDetails.png)
 
