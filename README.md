@@ -7,19 +7,22 @@
 - Without frameworks or external libraries as far as possible
 - Responsive design, mobile first, HTML5 semantics
 
-![dashboard](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/dashboard.png)
+Web view
+![dashboard.web](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/dashboard.png)
+Mobile view
+![dashboard.m](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/mobileView2.png)
 
 -On the dasboard you will find a navigation menu, a user creation section and the list of best-seller books by subject "Data provided by The New York Times".
 
-[https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/lists.png](https://github.com/GabrielaSpace/P-NYTLibrary/main/assets/)
+![lists](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/lists.png)
 
 -By pressing the read button you will be able to see the books from the selected list and it includes the following book information:
 
-[https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/bookDetails.png](https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/)
+![bookDetails](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/bookDetails.png)
 
 -So far you can browse the page without registering. However, in order to save a book you will have to register or if you already have an account, log in.
 
-[https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/favorites.png](https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/)
+![favoritesView](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/favorites.png)
 
 **To test how the project works you can follow the following link:**
 [GitHub Pages](https://pages.github.com/).
