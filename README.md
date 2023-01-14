@@ -12,13 +12,15 @@
 
 [https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/dashboard.png]
 
-On the dasboard you will find a navigation menu, a user creation section and the list of best-seller books by subject "Data provided by The New York Times".
+-On the dasboard you will find a navigation menu, a user creation section and the list of best-seller books by subject "Data provided by The New York Times".
 
 [https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/lists.png](https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/)
-By pressing the read button you will be able to see the books from the selected list and it includes the following book information:
+
+-By pressing the read button you will be able to see the books from the selected list and it includes the following book information:
 
 [https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/bookDetails.png](https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/)
-So far you can browse the page without registering. However, in order to save a book you will have to register or if you already have an account, log in.
+
+-So far you can browse the page without registering. However, in order to save a book you will have to register or if you already have an account, log in.
 
 [https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/favorites.png](https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/)
 
