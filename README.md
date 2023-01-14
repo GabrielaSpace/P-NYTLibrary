@@ -11,7 +11,7 @@
 
 -On the dasboard you will find a navigation menu, a user creation section and the list of best-seller books by subject "Data provided by The New York Times".
 
-[https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/lists.png](https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/)
+[https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/lists.png](https://github.com/GabrielaSpace/P-NYTLibrary/main/assets/)
 
 -By pressing the read button you will be able to see the books from the selected list and it includes the following book information:
 
