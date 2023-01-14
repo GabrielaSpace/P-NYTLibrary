@@ -27,7 +27,7 @@
 **To test how the project works you can follow the following link:**
 [GitHub Pages](https://pages.github.com/).
 
-Thanks for getting here. 	:handshake:
+Thanks for getting here. 	:handshake::sparkling_heart:
 
 
 ## 📫 How to reach me:
