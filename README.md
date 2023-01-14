@@ -1,13 +1,10 @@
 # Library Project based in  [API del NYTimes](https://developer.nytimes.com/apis)  :books: :book:
-*[Books API](https://developer.nytimes.com/docs/books-product/1/overview)*.
 
 **Requirements for this project**
 - Dynamic manipulation of the **DOM**
 - Management of **ES6**
 - **Asynchrony**
 - Without frameworks or external libraries as far as possible
-- Project management on **Github** from the beginning. Use of branches.
-- Clean code, **good practices**
 - Responsive design, mobile first, HTML5 semantics
 
 [https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/main/assets/dashboard.png]
@@ -32,3 +29,6 @@ Thanks for getting here. 	:handshake::sparkling_heart:
 
 ## 📫 How to reach me:
 <p align="left"><a href="https://www.github.com/GabrielaSpace" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/GabrielaSpace/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /></a></p>
+
+
+*[Books API](https://developer.nytimes.com/docs/books-product/1/overview)*.
