@@ -10,9 +10,10 @@
 Web view
 ![dashboard.web](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/dashboard.png)
 Mobile view
-![dashboard.m](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/mobileView2.png)
+![dashboard.m2](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/mobileView2.png)
+![dashboard.m1](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/mobileView.png)
 
--On the dasboard you will find a navigation menu, a user creation section and the list of best-seller books by subject "Data provided by The New York Times".
+-On the dashboard you will find a navigation menu, a user creation section and the list of best-seller books by subject "Data provided by The New York Times".
 
 ![lists](https://github.com/GabrielaSpace/ProyectoBiblioteca/blob/develop/assets/lists.png)
 
