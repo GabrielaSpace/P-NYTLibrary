@@ -31,5 +31,3 @@ Thanks for getting here. 	:handshake::sparkling_heart:
 ## 📫 How to reach me:
 <p align="left"><a href="https://www.github.com/GabrielaSpace" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/GabrielaSpace/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /></a></p>
 
-
-*[Books API](https://developer.nytimes.com/docs/books-product/1/overview)*.
