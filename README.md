@@ -7,7 +7,7 @@
 - Without frameworks or external libraries as far as possible
 - Responsive design, mobile first, HTML5 semantics
 
-[https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/develop/assets/dashboard.png]
+![https://raw.githubusercontent.com/GabrielaSpace/P-NYTLibrary/develop/assets/dashboard.png]
 
 -On the dasboard you will find a navigation menu, a user creation section and the list of best-seller books by subject "Data provided by The New York Times".
 
