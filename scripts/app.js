@@ -44,7 +44,6 @@ signUpForm.addEventListener("submit", async (e) => {
   const signUpUserName = document.querySelector("#userSignUp").value;
   const signUpEmail = document.querySelector("#emailSignUp").value;
   const signUpPassword = document.querySelector("#passwordSignUp").value;
-  console.log(signUpEmail, signUpPassword, signUpUserName);
   try {
     const userCredentials = await createUserWithEmailAndPassword(
       auth,
@@ -55,9 +54,6 @@ signUpForm.addEventListener("submit", async (e) => {
     showMessage('Successful registration')
     showMessage(`Session started: Welcome ${signUpUserName}`)
   } catch (error) {
-    console.log(error.message);
-    console.log(error.code);
-
     switch (error.code) {
       case "auth/email-already-in-use":
         showMessage("Email already in use",error);
@@ -77,16 +73,11 @@ LogInForm.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const email = document.querySelector("#emailLogin").value;
     const password = document.querySelector("#passwordLogin").value;
-    
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        console.log(userCredential)
         showMessage(`Welcome back ${email}`)
     }
     catch(error){
-        console.log(error.message);
-        console.log(error.code);
-
         switch (error.code) {
             case "auth/wrong-password":
               showMessage("Wrong password",error);
@@ -104,7 +95,7 @@ const logOut = document.querySelector('#logOutBut')
 logOut.addEventListener('click', async()=>{
     await signOut(auth)
     showMessage('You have successfully logged out')
-    console.log('No user in the system')
+    showMessage('No user in the system')
 })
 
 
@@ -118,15 +109,13 @@ const loginCheck = user =>{
       signUpForm.style.display='block'
       LogInForm.style.display='block'
       logOut.style.display='none'
-      
     }
 }
-
-
 //Phase1
 let containerPpal=document.querySelector('#dashboard');
 let containerBooks=document.querySelector('#booksSection');
 let containerFav=document.querySelector('#favorites')
+
 async function listName() {
   const result =await fetch (`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=J3nmH8Nj3Y5btF8WIQMVZohXdMNHAEzW`);
   const database = await result.json();
@@ -162,7 +151,6 @@ async function booksLists(codeList,name){
       goBackBut.style.display='none';
       listName();
   })
-
   for(let i=0; i<booksList.length;i++){bookContainer(booksList[i])}
   function bookContainer(object){
     let containerB= document.createElement('article');
@@ -177,26 +165,28 @@ async function booksLists(codeList,name){
                         }}booksLists()
 //Sección favoritos
 const favoritesList =document.querySelector('.favoriteList')
-const favBut = document.querySelector('.loginBut')
-// favBut.onClick=saveF()
+/* const favBut=document.querySelector('#botonaddfav')
+favBut.addEventListener('click',saveF());
+
 //Guardar favoritos
-
-
-/* function saveF(){
-  db.collection('users').add({
-    nombre: document.querySelector('.emailLogin').value
+ function saveF(){
+  try{
+   const docRef = await addDoc(collection(db, "favorites"),{
+   title: document.querySelector('#botonaddfav').value;
+   list: document.querySelector('#botonaddfav').name;
   })
   .then((docRef)=>{
-    alert('nombre incluido con ID: ',docRef.id)
+    alert('Favorite has been included with ID: ',docRef.id)
   })
-  .catch((error)=>{console.log('Error adding document',error)})
-}  */
-
+  .catch((error)=>{console.log('Error adding favorite',error)})
+}
+ */
 //Log In -Si el usuario esta autenticado puede obtener sus favoritos
 onAuthStateChanged(auth,async(user)=>{
   if (user) {
     const querySnapshot= await getDocs(collection(db, 'favorites'))
     setupFavorites(querySnapshot.docs);
+    console.log(querySnapshot.docs)
   } else {
       setupFavorites([]);
     
@@ -205,16 +195,18 @@ onAuthStateChanged(auth,async(user)=>{
 })
 
 // Pinta los favoritos en el DOM
+
 const setupFavorites =(data)=>{
     if(data.length){
+      console.log('aqui deberia aparecer ')
         let html =''
         data.forEach(fav=>{
           const favorite=fav.data()
-          const li=`<li>
-          <h3>${favorite.list}</h3>
-          <p>${favorite.title}</p>
-          </li>`
-          html +=li
+          const article=`<article class='cover'>
+          <h3>Title: ${favorite.title}</h3>
+          <p>Belongs to the list:  <b>${favorite.list}<b></p>
+          </article>`
+          html +=article
         })
         favoritesList.innerHTML= html
     }else{
@@ -243,12 +235,14 @@ function showMessage(message, type = "success") {
 let home= document.querySelector('#homeView');
 let favorite= document.querySelector('#favoriteView');
 favorite.addEventListener('click', (e)=>{
+  e.preventDefault();
   containerPpal.style.display='none'
   containerBooks.style.display='none'
   containerFav.style.display='flex'
 }
 )
 home.addEventListener('click', (e)=>{
+  e.preventDefault();
   containerPpal.style.display='flex'
   containerBooks.style.display='none'
   containerFav.style.display='none'
