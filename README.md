@@ -27,7 +27,7 @@
 The final version will allow you to add a photo to your session and be able to interact with your favorites (under construction)!
 
 **To test how the project works you can follow the following link:**
-[GitHub Pages](https://pages.github.com/).
+[NYT Library](https://gabrielaspace.github.io/P-NYTLibrary/).
 
 Thanks for getting here. 	:handshake::sparkling_heart:
 
