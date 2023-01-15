@@ -1,3 +1,4 @@
+
 //Animation
 window.addEventListener('load',()=>{
   const containerLoader =document.querySelector('#loadercontainer');
@@ -248,3 +249,4 @@ home.addEventListener('click', (e)=>{
   containerFav.style.display='none'
 }
 )
+
