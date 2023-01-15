@@ -20,6 +20,7 @@
 
 <body>
   <header>
+    <img class='header' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhqNsFpZosmbgW0HbTS2gfmqj09ZWJ-XAq0w&usqp=CAU">
     <nav>
       <ul>
         <li><a id='homeView'><span class="material-symbols-outlined">home</span></a></li>
@@ -32,22 +33,19 @@
     <div id="loadercontainer">
       <div id="loader"></div>
     </div>
-
-    <h1>New York Times Library</h1>
     <section id="auth">
       <form id="signUpForm" class="logOut">
-
         <p class="formMessage">Already have an account? Log In</p>
         <input type="text" id="userSignUp" placeholder="Username" required />
-        <input id="emailSignUp" placeholder="Write your email" required />
-        <input id="passwordSignUp" placeholder="Password should be at least 6 characters" required />
+        <input type="email" id="emailSignUp" placeholder="Write your email" required />
+        <input type="password" minlength="6" id="passwordSignUp" placeholder="Password should be at least 6 characters" required />
         <button type="submit" class="signUpBut">Register</button>
       </form>
 
       <form id="LogInForm" class="logOut">
         <p class="formMessage">Don't have an account? Register</p>
-        <input id="emailLogin" placeholder="Write your email" required />
-        <input id="passwordLogin" placeholder="Password" required />
+        <input type="email" id="emailLogin" placeholder="Write your email" required />
+        <input id="passwordLogin" type="password" minlength="6" placeholder="Password" required />
         <button type="submit" class="loginBut">Login</button>
       </form>
       <div id="logoutContainer" class="logIn">
@@ -55,14 +53,9 @@
       </div>
 
     </section>
-    <h2>Best Sellers</h2>
     <section id="dashboard"></section>
     <section id="booksSection"></section>
-    <section id="favorites">
-      <div class="favoriteContainer">
-        <ul class="favoriteList"></ul>
-      </div>
-    </section>
+    <section id="favorites" class="favoriteList"></section>
    
   </main>
 
